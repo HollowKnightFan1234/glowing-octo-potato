@@ -237,26 +237,28 @@ const gameContainer = document.getElementById("gameContainer");
 const backToGamesButton = document.getElementById("backToGamesButton");
 
 
-// Find all Play buttons
-const playButtons = document.querySelectorAll(".playButton");
+// Open a game when a Play button is clicked
+document.addEventListener("click", (event) => {
 
+    const button = event.target.closest(".playButton");
 
-// Open a game
-playButtons.forEach(button => {
+    if (!button) {
+        return;
+    }
 
-    button.addEventListener("click", () => {
+    const gameName = button.dataset.game;
 
-        const gameName = button.dataset.game;
+    console.log("Opening game:", gameName);
 
-        openGame(gameName);
-
-    });
+    openGame(gameName);
 
 });
 
 
 // Open game
 function openGame(gameName) {
+
+    console.log("openGame called:", gameName);
 
     gameGrid.style.display = "none";
     gamePlayer.style.display = "block";
@@ -267,9 +269,10 @@ function openGame(gameName) {
         currentGameTitle.textContent = "🕹️ Game 1";
 
         gameContainer.innerHTML = `
-            <p>
-                Game 1 will go here.
-            </p>
+            <div>
+                <h3>Game 1</h3>
+                <p>This game will go here.</p>
+            </div>
         `;
 
     }
@@ -280,9 +283,10 @@ function openGame(gameName) {
         currentGameTitle.textContent = "🚀 Game 2";
 
         gameContainer.innerHTML = `
-            <p>
-                Game 2 will go here.
-            </p>
+            <div>
+                <h3>Game 2</h3>
+                <p>This game will go here.</p>
+            </div>
         `;
 
     }
@@ -293,9 +297,10 @@ function openGame(gameName) {
         currentGameTitle.textContent = "🧩 Game 3";
 
         gameContainer.innerHTML = `
-            <p>
-                Game 3 will go here.
-            </p>
+            <div>
+                <h3>Game 3</h3>
+                <p>This game will go here.</p>
+            </div>
         `;
 
     }
@@ -310,11 +315,6 @@ backToGamesButton.addEventListener("click", () => {
     gameGrid.style.display = "grid";
 
 });
-
-
-// ==============================
-// CHECK LOGIN
-// ==============================
 
 async function checkLogin() {
 
