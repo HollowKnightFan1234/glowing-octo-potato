@@ -12,6 +12,23 @@ const logoutButton = document.getElementById("logoutButton");
 const message = document.getElementById("message");
 
 
+// Hub sections
+const gamesSection = document.getElementById("gamesSection");
+const chatSection = document.getElementById("chatSection");
+const accountSection = document.getElementById("accountSection");
+
+const gamesTab = document.getElementById("gamesTab");
+const chatTab = document.getElementById("chatTab");
+const accountTab = document.getElementById("accountTab");
+
+const accountEmail = document.getElementById("accountEmail");
+
+
+// Chat
+const chatInput = document.getElementById("chatInput");
+const sendMessageButton = document.getElementById("sendMessageButton");
+
+
 // Create an account
 signupButton.addEventListener("click", async () => {
 
@@ -27,7 +44,8 @@ signupButton.addEventListener("click", async () => {
         email: email,
         password: password,
         options: {
-            emailRedirectTo: "https://hollowknightfan1234.github.io/glowing-octo-potato/"
+            emailRedirectTo:
+                "https://hollowknightfan1234.github.io/glowing-octo-potato/"
         }
     });
 
@@ -101,24 +119,116 @@ logoutButton.addEventListener("click", async () => {
 });
 
 
-// Show login screen
+// Show login
 function showLoginArea() {
+
     loginArea.style.display = "block";
     gameArea.style.display = "none";
 }
 
 
-// Show game hub
+// Show Game Hub
 function showGameArea() {
+
     loginArea.style.display = "none";
     gameArea.style.display = "block";
+
+    showGames();
+
+    loadAccount();
 }
+
+
+// Games tab
+gamesTab.addEventListener("click", () => {
+
+    showGames();
+
+});
+
+
+// Chat tab
+chatTab.addEventListener("click", () => {
+
+    gamesSection.style.display = "none";
+    chatSection.style.display = "block";
+    accountSection.style.display = "none";
+
+});
+
+
+// Account tab
+accountTab.addEventListener("click", () => {
+
+    gamesSection.style.display = "none";
+    chatSection.style.display = "none";
+    accountSection.style.display = "block";
+
+    loadAccount();
+
+});
+
+
+// Show games
+function showGames() {
+
+    gamesSection.style.display = "block";
+    chatSection.style.display = "none";
+    accountSection.style.display = "none";
+
+}
+
+
+// Load account information
+async function loadAccount() {
+
+    const { data, error } =
+        await window.appSupabase.auth.getUser();
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    if (data.user) {
+        accountEmail.textContent =
+            "Logged in as: " + data.user.email;
+    }
+
+}
+
+
+// Send chat message
+sendMessageButton.addEventListener("click", () => {
+
+    const text = chatInput.value.trim();
+
+    if (!text) {
+        return;
+    }
+
+    console.log("Message ready to send:", text);
+
+    chatInput.value = "";
+
+});
+
+
+// Allow Enter to send
+chatInput.addEventListener("keydown", (event) => {
+
+    if (event.key === "Enter") {
+        sendMessageButton.click();
+    }
+
+});
 
 
 // Check whether someone is already logged in
 async function checkLogin() {
 
-    const { data, error } = await window.appSupabase.auth.getSession();
+    const { data, error } =
+        await window.appSupabase.auth.getSession();
 
     if (error) {
         console.error(error);
@@ -130,6 +240,7 @@ async function checkLogin() {
     } else {
         showLoginArea();
     }
+
 }
 
 
