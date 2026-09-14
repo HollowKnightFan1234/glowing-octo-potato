@@ -6,6 +6,7 @@ const passwordInput = document.getElementById("password");
 
 const loginButton = document.getElementById("loginButton");
 const signupButton = document.getElementById("signupButton");
+const resendButton = document.getElementById("resendButton");
 const logoutButton = document.getElementById("logoutButton");
 
 const message = document.getElementById("message");
@@ -40,11 +41,10 @@ signupButton.addEventListener("click", async () => {
         return;
     }
 
-    const { data, error } =
-        await window.appSupabase.auth.signUp({
-            email: email,
-            password: password
-        });
+    const { error } = await window.appSupabase.auth.signUp({
+        email: email,
+        password: password
+    });
 
     if (error) {
         message.textContent = error.message;
@@ -53,6 +53,31 @@ signupButton.addEventListener("click", async () => {
 
     message.textContent =
         "Account created! Check your email if confirmation is required.";
+});
+
+
+// Resend confirmation email
+resendButton.addEventListener("click", async () => {
+
+    const email = emailInput.value;
+
+    if (!email) {
+        message.textContent = "Enter your email first.";
+        return;
+    }
+
+    const { error } = await window.appSupabase.auth.resend({
+        type: "signup",
+        email: email
+    });
+
+    if (error) {
+        message.textContent = error.message;
+        return;
+    }
+
+    message.textContent =
+        "Confirmation email sent! Check your inbox.";
 });
 
 
@@ -67,7 +92,7 @@ loginButton.addEventListener("click", async () => {
         return;
     }
 
-    const { data, error } =
+    const { error } =
         await window.appSupabase.auth.signInWithPassword({
             email: email,
             password: password
@@ -109,25 +134,3 @@ function showGameArea() {
 
 // Start
 checkLogin();
-const resendButton = document.getElementById("resendButton");
-
-resendButton.addEventListener("click", async () => {
-    const email = emailInput.value;
-
-    if (!email) {
-        message.textContent = "Enter your email first.";
-        return;
-    }
-
-    const { error } = await window.appSupabase.auth.resend({
-        type: "signup",
-        email: email
-    });
-
-    if (error) {
-        message.textContent = error.message;
-        return;
-    }
-
-    message.textContent = "Confirmation email sent! Check your inbox.";
-});
