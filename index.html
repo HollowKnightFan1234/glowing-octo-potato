@@ -11,9 +11,10 @@
 
     <div id="app">
 
-        <h1>🎮 Game Hub</h1>
-
+        <!-- LOGIN -->
         <div id="loginArea">
+
+            <h1>🎮 Game Hub</h1>
 
             <h2>🔒 Log in</h2>
 
@@ -32,24 +33,148 @@
             <button id="loginButton">Log in</button>
 
             <button id="signupButton">Create account</button>
-            
-            <button id="resendButton">Resend confirmation email</button>
+
+            <button id="resendButton">
+                Resend confirmation email
+            </button>
 
             <p id="message"></p>
 
         </div>
 
+
+        <!-- GAME HUB -->
         <div id="gameArea" style="display: none;">
 
-            <h2>Welcome to the Game Hub! 🎮</h2>
+            <header class="hubHeader">
 
-            <button id="logoutButton">Log out</button>
+                <h1>🎮 Game Hub</h1>
+
+                <button id="logoutButton">
+                    Log out
+                </button>
+
+            </header>
+
+
+            <!-- NAVIGATION -->
+            <nav class="hubNav">
+
+                <button id="gamesTab">
+                    🎮 Games
+                </button>
+
+                <button id="chatTab">
+                    💬 Chat
+                </button>
+
+                <button id="accountTab">
+                    👤 Account
+                </button>
+
+            </nav>
+
+
+            <!-- GAMES -->
+            <section id="gamesSection">
+
+                <h2>🎮 Games</h2>
+
+                <div class="gameGrid">
+
+                    <div class="gameCard">
+
+                        <h3>🕹️ Game 1</h3>
+
+                        <p>
+                            Your first game will go here.
+                        </p>
+
+                        <button>
+                            Play
+                        </button>
+
+                    </div>
+
+
+                    <div class="gameCard">
+
+                        <h3>🕹️ Game 2</h3>
+
+                        <p>
+                            Another game can go here.
+                        </p>
+
+                        <button>
+                            Play
+                        </button>
+
+                    </div>
+
+
+                    <div class="gameCard">
+
+                        <h3>➕ More games</h3>
+
+                        <p>
+                            More games can be added later.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CHAT -->
+            <section id="chatSection" style="display: none;">
+
+                <h2>💬 Chat</h2>
+
+                <div id="chatBox">
+
+                    <p class="emptyChat">
+                        No messages yet.
+                    </p>
+
+                </div>
+
+                <div class="chatInputArea">
+
+                    <input
+                        type="text"
+                        id="chatInput"
+                        placeholder="Type a message..."
+                        maxlength="500"
+                    >
+
+                    <button id="sendMessageButton">
+                        Send
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACCOUNT -->
+            <section id="accountSection" style="display: none;">
+
+                <h2>👤 Account</h2>
+
+                <p id="accountEmail"></p>
+
+            </section>
 
         </div>
 
     </div>
 
+
+    <!-- SUPABASE -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script src="js/supabase.js"></script>
     <script src="js/app.js"></script>
 
