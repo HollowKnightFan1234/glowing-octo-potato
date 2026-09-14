@@ -12,24 +12,6 @@ const logoutButton = document.getElementById("logoutButton");
 const message = document.getElementById("message");
 
 
-// Check whether someone is already logged in
-async function checkLogin() {
-
-    const { data, error } = await window.appSupabase.auth.getSession();
-
-    if (error) {
-        console.error(error);
-        return;
-    }
-
-    if (data.session) {
-        showGameArea();
-    } else {
-        showLoginArea();
-    }
-}
-
-
 // Create an account
 signupButton.addEventListener("click", async () => {
 
@@ -46,7 +28,7 @@ signupButton.addEventListener("click", async () => {
         password: password,
         options: {
             emailRedirectTo: "https://hollowknightfan1234.github.io/glowing-octo-potato/"
-    }
+        }
     });
 
     if (error) {
@@ -121,7 +103,6 @@ logoutButton.addEventListener("click", async () => {
 
 // Show login screen
 function showLoginArea() {
-
     loginArea.style.display = "block";
     gameArea.style.display = "none";
 }
@@ -129,9 +110,26 @@ function showLoginArea() {
 
 // Show game hub
 function showGameArea() {
-
     loginArea.style.display = "none";
     gameArea.style.display = "block";
+}
+
+
+// Check whether someone is already logged in
+async function checkLogin() {
+
+    const { data, error } = await window.appSupabase.auth.getSession();
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    if (data.session) {
+        showGameArea();
+    } else {
+        showLoginArea();
+    }
 }
 
 
