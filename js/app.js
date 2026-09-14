@@ -109,3 +109,25 @@ function showGameArea() {
 
 // Start
 checkLogin();
+const resendButton = document.getElementById("resendButton");
+
+resendButton.addEventListener("click", async () => {
+    const email = emailInput.value;
+
+    if (!email) {
+        message.textContent = "Enter your email first.";
+        return;
+    }
+
+    const { error } = await window.appSupabase.auth.resend({
+        type: "signup",
+        email: email
+    });
+
+    if (error) {
+        message.textContent = error.message;
+        return;
+    }
+
+    message.textContent = "Confirmation email sent! Check your inbox.";
+});
