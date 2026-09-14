@@ -78,53 +78,74 @@
             <!-- GAMES -->
             <section id="gamesSection">
 
-                <h2>🎮 Games</h2>
+    <h2>🎮 Games</h2>
 
-                <div class="gameGrid">
+    <div id="gameGrid" class="gameGrid">
 
-                    <div class="gameCard">
+        <div class="gameCard">
 
-                        <h3>🕹️ Game 1</h3>
+            <h3>🕹️ Game 1</h3>
 
-                        <p>
-                            Your first game will go here.
-                        </p>
+            <p>Our first game.</p>
 
-                        <button>
-                            Play
-                        </button>
+            <button class="playButton" data-game="game1">
+                Play
+            </button>
 
-                    </div>
+        </div>
 
 
-                    <div class="gameCard">
+        <div class="gameCard">
 
-                        <h3>🕹️ Game 2</h3>
+            <h3>🚀 Game 2</h3>
 
-                        <p>
-                            Another game can go here.
-                        </p>
+            <p>Our second game.</p>
 
-                        <button>
-                            Play
-                        </button>
+            <button class="playButton" data-game="game2">
+                Play
+            </button>
 
-                    </div>
+        </div>
 
 
-                    <div class="gameCard">
+        <div class="gameCard">
 
-                        <h3>➕ More games</h3>
+            <h3>🧩 Game 3</h3>
 
-                        <p>
-                            More games can be added later.
-                        </p>
+            <p>Another game can go here.</p>
 
-                    </div>
+            <button class="playButton" data-game="game3">
+                Play
+            </button>
 
-                </div>
+        </div>
 
-            </section>
+    </div>
+
+
+    <!-- GAME PLAYER -->
+
+    <div id="gamePlayer" style="display: none;">
+
+        <button id="backToGamesButton">
+            ← Back to games
+        </button>
+
+        <h2 id="currentGameTitle">
+            Game
+        </h2>
+
+        <div id="gameContainer">
+
+            <p>
+                Game loading...
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
             <!-- CHAT -->
