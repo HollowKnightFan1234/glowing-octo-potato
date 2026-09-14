@@ -43,7 +43,7 @@ signupButton.addEventListener("click", async () => {
 
     const { error } = await window.appSupabase.auth.signUp({
         email: email,
-        password: password
+        password: password,
         options: {
             emailRedirectTo: "https://hollowknightfan1234.github.io/glowing-octo-potato/"
     }
