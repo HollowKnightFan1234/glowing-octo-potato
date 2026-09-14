@@ -119,7 +119,7 @@ logoutButton.addEventListener("click", async () => {
 });
 
 
-// Show login
+// Show login screen
 function showLoginArea() {
 
     loginArea.style.display = "block";
@@ -134,8 +134,8 @@ function showGameArea() {
     gameArea.style.display = "block";
 
     showGames();
-
     loadAccount();
+
 }
 
 
@@ -191,8 +191,10 @@ async function loadAccount() {
     }
 
     if (data.user) {
+
         accountEmail.textContent =
             "Logged in as: " + data.user.email;
+
     }
 
 }
@@ -224,21 +226,116 @@ chatInput.addEventListener("keydown", (event) => {
 });
 
 
-// Check whether someone is already logged in
+// ==============================
+// GAME SYSTEM
+// ==============================
+
+const gameGrid = document.getElementById("gameGrid");
+const gamePlayer = document.getElementById("gamePlayer");
+const currentGameTitle = document.getElementById("currentGameTitle");
+const gameContainer = document.getElementById("gameContainer");
+const backToGamesButton = document.getElementById("backToGamesButton");
+
+
+// Find all Play buttons
+const playButtons = document.querySelectorAll(".playButton");
+
+
+// Open a game
+playButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const gameName = button.dataset.game;
+
+        openGame(gameName);
+
+    });
+
+});
+
+
+// Open game
+function openGame(gameName) {
+
+    gameGrid.style.display = "none";
+    gamePlayer.style.display = "block";
+
+
+    if (gameName === "game1") {
+
+        currentGameTitle.textContent = "🕹️ Game 1";
+
+        gameContainer.innerHTML = `
+            <p>
+                Game 1 will go here.
+            </p>
+        `;
+
+    }
+
+
+    if (gameName === "game2") {
+
+        currentGameTitle.textContent = "🚀 Game 2";
+
+        gameContainer.innerHTML = `
+            <p>
+                Game 2 will go here.
+            </p>
+        `;
+
+    }
+
+
+    if (gameName === "game3") {
+
+        currentGameTitle.textContent = "🧩 Game 3";
+
+        gameContainer.innerHTML = `
+            <p>
+                Game 3 will go here.
+            </p>
+        `;
+
+    }
+
+}
+
+
+// Back to games
+backToGamesButton.addEventListener("click", () => {
+
+    gamePlayer.style.display = "none";
+    gameGrid.style.display = "grid";
+
+});
+
+
+// ==============================
+// CHECK LOGIN
+// ==============================
+
 async function checkLogin() {
 
     const { data, error } =
         await window.appSupabase.auth.getSession();
 
     if (error) {
+
         console.error(error);
         return;
+
     }
 
     if (data.session) {
+
         showGameArea();
+
     } else {
+
         showLoginArea();
+
     }
 
 }
