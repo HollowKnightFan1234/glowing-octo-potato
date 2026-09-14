@@ -11,16 +11,39 @@
 
     <div id="app">
 
-        <header>
-            <h1>Game Hub</h1>
-        </header>
+        <h1>🎮 Game Hub</h1>
 
-        <main>
-            <h2>Welcome</h2>
+        <div id="loginArea">
 
-            <button id="chatButton">💬 Chats</button>
-            <button id="gamesButton">🎮 Games</button>
-        </main>
+            <h2>🔒 Log in</h2>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+            >
+
+            <button id="loginButton">Log in</button>
+
+            <button id="signupButton">Create account</button>
+
+            <p id="message"></p>
+
+        </div>
+
+        <div id="gameArea" style="display: none;">
+
+            <h2>Welcome to the Game Hub! 🎮</h2>
+
+            <button id="logoutButton">Log out</button>
+
+        </div>
 
     </div>
 
