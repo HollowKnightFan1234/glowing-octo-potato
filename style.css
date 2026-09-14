@@ -2,12 +2,14 @@
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #10131a;
     color: white;
 }
+
 
 #app {
     width: 100%;
@@ -17,7 +19,9 @@ body {
 }
 
 
-/* LOGIN */
+/* ==============================
+   LOGIN
+   ============================== */
 
 #loginArea {
     max-width: 450px;
@@ -28,9 +32,11 @@ body {
     border-radius: 15px;
 }
 
+
 #loginArea h1 {
     font-size: 36px;
 }
+
 
 input {
     width: 100%;
@@ -41,6 +47,7 @@ input {
     font-size: 16px;
 }
 
+
 button {
     padding: 11px 16px;
     margin: 5px;
@@ -50,12 +57,15 @@ button {
     font-size: 15px;
 }
 
+
 button:hover {
     opacity: 0.85;
 }
 
 
-/* GAME HUB HEADER */
+/* ==============================
+   GAME HUB HEADER
+   ============================== */
 
 .hubHeader {
     display: flex;
@@ -64,12 +74,15 @@ button:hover {
     margin-bottom: 20px;
 }
 
+
 .hubHeader h1 {
     margin: 0;
 }
 
 
-/* NAVIGATION */
+/* ==============================
+   NAVIGATION
+   ============================== */
 
 .hubNav {
     display: flex;
@@ -80,18 +93,26 @@ button:hover {
     border-radius: 12px;
 }
 
+
 .hubNav button {
     flex: 1;
 }
 
 
-/* GAMES */
+/* ==============================
+   GAMES
+   ============================== */
 
 .gameGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+    );
+
     gap: 20px;
 }
+
 
 .gameCard {
     background: #1b202b;
@@ -100,47 +121,90 @@ button:hover {
     min-height: 180px;
 }
 
+
 .gameCard h3 {
     margin-top: 0;
 }
+
 
 .gameCard button {
     margin-top: 15px;
 }
 
 
-/* CHAT */
+/* ==============================
+   GAME PLAYER
+   ============================== */
+
+#gamePlayer {
+    background: #1b202b;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+
+#gameContainer {
+    min-height: 400px;
+    background: #10131a;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+#backToGamesButton {
+    margin: 0 0 15px 0;
+}
+
+
+/* ==============================
+   CHAT
+   ============================== */
 
 #chatBox {
     height: 450px;
     overflow-y: auto;
+
     background: #1b202b;
+
     border-radius: 15px;
+
     padding: 15px;
+
     margin-bottom: 10px;
 }
+
 
 .emptyChat {
     opacity: 0.6;
     text-align: center;
 }
 
+
 .chatInputArea {
     display: flex;
     gap: 10px;
 }
+
 
 .chatInputArea input {
     margin: 0;
     flex: 1;
 }
 
+
 .chatInputArea button {
     margin: 0;
 }
 
 
-/* ACCOUNT */
+/* ==============================
+   ACCOUNT
+   ============================== */
 
 #accountSection {
     background: #1b202b;
@@ -149,7 +213,9 @@ button:hover {
 }
 
 
-/* MOBILE / IPAD */
+/* ==============================
+   MOBILE / IPAD
+   ============================== */
 
 @media (max-width: 600px) {
 
@@ -157,18 +223,22 @@ button:hover {
         padding: 15px;
     }
 
+
     .hubHeader {
         flex-direction: column;
         gap: 10px;
     }
 
+
     .hubNav {
         flex-direction: column;
     }
 
+
     .chatInputArea {
         flex-direction: column;
     }
+
 
     .chatInputArea button {
         width: 100%;
